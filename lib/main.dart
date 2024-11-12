@@ -58,10 +58,15 @@ class ListViewTab extends StatelessWidget {
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.label),
-          title: Text(items[index]),
-          subtitle: Text("Item $index"),
+        return InkWell(
+          onTap: () {
+            print("Tapped on ${items[index]}");
+          },
+          child: ListTile(
+            leading: Icon(Icons.label),
+            title: Text(items[index]),
+            subtitle: Text("Item $index"),
+          ),
         );
       },
     );
@@ -69,19 +74,24 @@ class ListViewTab extends StatelessWidget {
 }
 
 class GridViewTab extends StatelessWidget {
-   List<String> items = List<String>.generate(20, (index) => "Grid $index");
+  List<String> items = List<String>.generate(20, (index) => "Grid $index");
 
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(items.length, (index) {
-        return Card(
-          margin: EdgeInsets.all(8.0),
-          child: Center(
-            child: Text(
-              items[index],
-              style: TextStyle(fontSize: 15),
+        return InkWell(
+          onTap: () {
+            print("Tapped on ${items[index]}");
+          },
+          child: Card(
+            margin: EdgeInsets.all(8.0),
+            child: Center(
+              child: Text(
+                items[index],
+                style: TextStyle(fontSize: 18),
+              ),
             ),
           ),
         );
@@ -89,3 +99,4 @@ class GridViewTab extends StatelessWidget {
     );
   }
 }
+
